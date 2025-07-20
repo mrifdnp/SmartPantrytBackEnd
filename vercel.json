@@ -1,9 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api/notifications/low-stock",
-      "schedule": "0 8 * * *",
-      "method": "POST"
+      "path": "/api/cron",
+      "schedule": "0 10 * * *"
     }
   ]
 }
