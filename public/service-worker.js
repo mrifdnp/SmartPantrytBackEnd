@@ -11,6 +11,8 @@ self.addEventListener("push", function (event) {
   const title = notificationData.title || "Untitled";
   const options = {
     body: notificationData.body || "No body",
+    icon: notificationData.icon || "/icons/icon-192x192.png", // default fallback icon
+    image: notificationData.image, // this will show a large image if supported
     data: {
       url: notificationData.deep_link || "https://smart-pantry-back-end.vercel.app/",
     },
