@@ -1,21 +1,23 @@
-self.addEventListener("notificationclick", function(event) {
-  event.notification.close();
+self.addEventListener("push", function(event) {
+  let payload = {};
 
-  const targetUrl = event.notification.data?.url || "https://smart-pantry-back-end.vercel.app/";
+  try {
+    payload = event.data?.json();
+  } catch {
+    payload = {
+      title: "Push Notification",
+      body: event.data?.text() || "No body",
+    };
+  }
+
+  const title = payload.title || "Untitled";
+  const options = {
+    body: payload.body || "No body",
+    icon: "/icons/icon-192x192.png",
+    data: { url: payload.deep_link || "https://smart-pantry-back-end.vercel.app/" }
+  };
 
   event.waitUntil(
-    clients.matchAll({ type: "window" }).then((clientList) => {
-      // Jika sudah ada tab terbuka, fokuskan
-      for (const client of clientList) {
-        if (client.url === targetUrl && "focus" in client) {
-          return client.focus();
-        }
-      }
-
-      // Kalau belum ada, buka baru
-      if (clients.openWindow) {
-        return clients.openWindow(targetUrl);
-      }
-    })
+    self.registration.showNotification(title, options)
   );
 });
