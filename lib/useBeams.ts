@@ -16,15 +16,9 @@ export function useBeams() {
 
     const initBeams = async () => {
       try {
-        await beamsClient.start();
-        const state = await beamsClient.getDeviceId();
-
-        if (state) {
-          await beamsClient.addDeviceInterest(`user-${profile.id}`);
-          console.log(`Subscribed to user-${profile.id}`);
-        } else {
-          console.error('Beams SDK not registered yet.');
-        }
+        await beamsClient.start();  // Tunggu Beams siap
+        await beamsClient.addDeviceInterest(`user-${profile.id}`);  // Langsung subscribe
+        console.log(`Subscribed to user-${profile.id}`);
       } catch (error) {
         console.error('Beams error:', error);
       }
