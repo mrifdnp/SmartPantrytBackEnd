@@ -1,11 +1,13 @@
 self.addEventListener("push", function (event) {
   const data = event.data?.json();
 
-  const title = data.notification?.title || "Untitled";
+  const notificationData = data?.web?.notification || {};
+
+  const title = notificationData.title || "Untitled";
   const options = {
-    body: data.notification?.body || "No body",
+    body: notificationData.body || "No body",
     data: {
-      url: data.notification?.deep_link || "https://smart-pantry.vercel.app/",
+      url: notificationData.deep_link || "https://smart-pantry.vercel.app/",
     }
   };
 
