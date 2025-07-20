@@ -7,7 +7,7 @@ self.addEventListener("push", function (event) {
   const options = {
     body: notificationData.body || "No body",
     data: {
-      url: notificationData.deep_link || "https://smart-pantry.vercel.app/",
+      url: notificationData.deep_link || "https://smart-pantry-back-end.vercel.app/",
     }
   };
 
@@ -16,7 +16,7 @@ self.addEventListener("push", function (event) {
 
 self.addEventListener("notificationclick", function (event) {
   event.notification.close();
-  const targetUrl = event.notification.data?.url || "https://smart-pantry.vercel.app/";
+  const targetUrl = event.notification.data?.url || "https://smart-pantry-back-end.vercel.app/";
 
   event.waitUntil(
     clients.matchAll({ type: "window" }).then((clientList) => {
