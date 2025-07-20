@@ -4,7 +4,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Settings } from "lucide-react";
 import { useState } from "react";
-import { DashboardHeader } from "@/components/dashboard/personal/dashboard-header"
+import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 
 export default function SettingsPage() {
     const [settings, setSettings] = useState({

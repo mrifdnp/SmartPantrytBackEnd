@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { DashboardHeader } from "@/components/dashboard/personal/dashboard-header"
+import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 export default function HelpPage() {
   const [showForm, setShowForm] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
