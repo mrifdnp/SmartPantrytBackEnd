@@ -1,7 +1,7 @@
 self.addEventListener("notificationclick", function(event) {
   event.notification.close();
 
-  const targetUrl = event.notification.data?.url || "http://localhost:3000/";
+  const targetUrl = event.notification.data?.url || "http://smartpantrybackend.vercel.app/";
 
   event.waitUntil(
     clients.matchAll({ type: "window" }).then((clientList) => {
